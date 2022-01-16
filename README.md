@@ -80,9 +80,12 @@ pip3 freeze | xargs pip3 uninstall -y
 - [x] Bootsrap CSS integration
     - [x] Upgrade templates
 - [ ] WTForms integration
+    - [x] Implement Flask-WTF
+    - [x] Form Validation
 	- [ ] Re/Captcha implementation
 	- [ ] WYSIWYG implementation
-	- [ ] Update existing forms
+	- [-] Update existing forms
+	- [ ] Admin CRUD
 - [ ] SQLAlchemy integration
 - [ ] DB Migration system integration
 - [ ] Mail integration
@@ -106,6 +109,8 @@ pip3 freeze | xargs pip3 uninstall -y
 - [x] 404 page
 - [ ] Logging
 - [ ] Flash message with criticality
+- [ ] Time zone
+- [x] Blueprint auto loading
 
 
 ----------------------
@@ -120,6 +125,9 @@ pip3 freeze | xargs pip3 uninstall -y
 - https://bootstrap-flask.readthedocs.io/
 - https://flask.palletsprojects.com/en/2.0.x/tutorial/
 - https://feathericons.com/
+- https://flask-wtf.readthedocs.io/
+- https://wtforms.readthedocs.io/en/3.0.x/
+
 
 ----------------------
 

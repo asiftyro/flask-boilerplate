@@ -3,8 +3,8 @@ from flask import (
 )
 from werkzeug.exceptions import abort
 
-from flaskr.auth import login_required
-from flaskr.db import get_db
+from ..auth import login_required
+from ...db import get_db
 
 bp = Blueprint('admin', __name__, url_prefix='/admin')
 
@@ -39,7 +39,8 @@ def content_create():
         ' FROM post p JOIN user u ON p.author_id = u.id'
         ' ORDER BY created DESC'
     ).fetchall()
-    return render_template('views/admin/content/create.html', posts=posts)
+    
+    return render_template('views/admin/content/create.html', form=form)
 
 @bp.route('/content/update')
 @login_required

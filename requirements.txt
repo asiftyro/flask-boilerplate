@@ -2,3 +2,4 @@ flask
 pytest
 coverage
 bootstrap-flask
+Flask-WTF

@@ -1,8 +1,16 @@
 import os, sys
 from flask import Flask, render_template
-
-
 from flask_bootstrap import Bootstrap4
+from flask_wtf.csrf import CSRFProtect
+from importlib import import_module
+import time
+
+# print(time.strftime('%Y-%m-%d %H:%M:%S')) # before timezone change
+os.environ['TZ'] = 'Asia/Dhaka' # set new timezone
+time.tzset()
+# print(time.strftime('%Y-%m-%d %H:%M:%S')) # after timezone change
+
+csrf = CSRFProtect()
 bootstrap = Bootstrap4()
         
 
@@ -10,10 +18,6 @@ def create_app(test_config=None):
     # create and configure the app
     app = Flask(__name__, instance_relative_config=True)
     
-    @app.errorhandler(404)
-    def page_not_found(error):
-        return render_template('views/error/404.html')
-
     app.config.from_mapping(
         SECRET_KEY='dev',
         DATABASE=os.path.join(app.instance_path, 'flaskr.sqlite'),
@@ -33,24 +37,24 @@ def create_app(test_config=None):
     except OSError:
         pass
 
+    csrf.init_app(app)
     bootstrap.init_app(app)
 
     from . import db
     db.init_app(app)
 
+    @app.errorhandler(404)
+    def page_not_found(error):
+        return render_template('views/error/404.html')
+
     @app.route('/')
     def hello():
         return 'Ello, Wald! Enjoy!'
 
-    from . import auth
-    app.register_blueprint(auth.bp)
-
-    # from . import blog
-    # app.register_blueprint(blog.bp)
-
-    from . import admin
-    app.register_blueprint(admin.bp)
+    # import and register blueprints
+    root_dir = os.path.basename(os.path.dirname(os.path.abspath(__file__)))
+    for module_name in ('auth', 'admin'):
+        module = import_module('{}.blueprints.{}'.format(root_dir, module_name))
+        app.register_blueprint(module.bp)
     
-
-
     return app
