@@ -1,7 +1,13 @@
-import os
-
+import os, sys
+# from os.path import dirname
+# print(dirname(__file__))
+# sys.path.append(dirname(__file__))
 from flask import Flask
 
+
+from flask_bootstrap import Bootstrap4
+bootstrap = Bootstrap4()
+        
 
 def create_app(test_config=None):
     # create and configure the app
@@ -9,6 +15,7 @@ def create_app(test_config=None):
     app.config.from_mapping(
         SECRET_KEY='dev',
         DATABASE=os.path.join(app.instance_path, 'flaskr.sqlite'),
+        BOOTSTRAP_SERVE_LOCAL=True,
     )
 
     if test_config is None:
@@ -24,22 +31,23 @@ def create_app(test_config=None):
     except OSError:
         pass
 
+    bootstrap.init_app(app)
+
     from . import db
     db.init_app(app)
-    
+
+    @app.route('/')
+    def hello():
+        return 'Ello, Wald! Enjoy!'
+
     from . import auth
     app.register_blueprint(auth.bp)
 
+    # from . import blog
+    # app.register_blueprint(blog.bp)
 
-    from . import blog
-    app.register_blueprint(blog.bp)
-    app.add_url_rule('/', endpoint='index')
-
-
-    # a simple page that says hello
-    @app.route('/hello')
-    def hello():
-        return 'Hello, World!'
-
+    from . import admin
+    app.register_blueprint(admin.bp)
+    
 
     return app

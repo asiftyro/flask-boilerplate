@@ -1,0 +1,31 @@
+{% extends 'layouts/admin/index.html' %}
+
+{% block header %}
+<h1 class="h2">Login</h1>
+<!-- <div class="btn-toolbar mb-2 mb-md-0">
+  <div class="btn-group mr-2">
+    <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
+    <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+  </div>
+  <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+    <span data-feather="calendar"></span>
+    This week
+  </button>
+</div> -->
+{% endblock %}
+
+{% block content %}
+
+
+  <form method="post">
+    <div class="form-group">
+      <label for="username">Email address</label>
+      <input type="email" class="form-control" name="username" id="username" aria-describedby="username">
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" class="form-control" name="password" id="password">
+    </div>
+    <button type="submit" class="btn btn-primary">Log In</button>
+  </form>  
+{% endblock %}

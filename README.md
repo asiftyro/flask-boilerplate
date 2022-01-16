@@ -1,26 +1,35 @@
 
 # flask-boilerplate
 
-  
+
+## Development commands
+
+
 ### Setup from zsh:
 
-
 ```
-### Clone
+# Clone
 git clone https://github.com/asiftyro/flask-boilerplate.git
-### Change dir
+
+# Change dir
 cd flask-boilerplate
-### Create virtual env
+
+# Create virtual env
 python3 -m venv venv
-### Activate virtual env
+# Or,
+virtualenv venv -p python3
+
+# Activate virtual env
 source venv/bin/activate
-### Install packages
+
+# Install packages
 pip3 install -r requirements.txt
-### Set env variables
+
+# Set env variables
 export FLASK_APP=flaskr
 export FLASK_ENV=development
-flask run
-### Initialize database
+
+# Initialize database
 flask init-db
 ```
 
@@ -28,30 +37,36 @@ flask init-db
 
 ```
 flask run
+# Or,
+flask run --host=0.0.0.0 --port=8888
+# Or,
+python3 -m flask run
 ```
 
 ### Tests and Coverage
+
 ```
-### Run tests
+# Run tests
 pytest
-### Measure the code coverage of tests
+
+# Measure the code coverage of tests
 coverage run -m pytest
-### View a simple coverage report in the terminal
+
+# View a simple coverage report in the terminal
 coverage report
-### Generate and view HTML coverage in browser
+
+# Generate and view HTML coverage in browser
 coverage html
 open htmlcov/index.html
 ```
-
-
---------------------------
-
   
-  
+### Misc  
+
 ```
-### Deactivate venv
+# Deactivate venv
 deactivate
-### Remove all packages installed by pip3
+
+# Remove all packages installed by pip3
 pip3 freeze | xargs pip3 uninstall -y
 ```
 
@@ -62,21 +77,24 @@ pip3 freeze | xargs pip3 uninstall -y
   
 ### TODO:
 
-- [ ] Bootsrap CSS integration
-    - [ ] Upgrade templates
+- [x] Bootsrap CSS integration
+    - [x] Upgrade templates
 - [ ] WTForms integration
-	- [ ] Recaptcha implementation
+	- [ ] Re/Captcha implementation
 	- [ ] WYSIWYG implementation
 	- [ ] Update existing forms
 - [ ] SQLAlchemy integration
 - [ ] DB Migration system integration
 - [ ] Mail integration
-- [ ] Configuration file implementation (development and production profiles)
+- [ ] Configuration file implementation 
+  - [ ] development and production profiles
+  - [ ] site-wise settings
+  - [ ] credentials, keys
 - [ ] MariaDB integration
 - [ ] WSGI/ASGI implementation
 - [ ] Deployment workflow creation
 - [ ] Standard secured User management and ACL implementation  
-	- [ ] Registration
+	- [ ]  Registration
 	- [ ]  Verification
 	- [ ]  Authentication
 	- [ ]  2FA
@@ -84,6 +102,7 @@ pip3 freeze | xargs pip3 uninstall -y
 - [ ] Google analytics integration
 - [ ] Server and Cient side Datatables integration
 - [X] Test implementation
+- [ ] 404 page
 
 
 ----------------------
