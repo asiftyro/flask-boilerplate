@@ -75,7 +75,7 @@ pip3 freeze | xargs pip3 uninstall -y
 
   
   
-### TODO:
+## ToDo:
 
 - [x] Bootsrap CSS integration
     - [x] Upgrade templates
@@ -106,5 +106,19 @@ pip3 freeze | xargs pip3 uninstall -y
 
 
 ----------------------
+
+#### Notes:
+ - Test settings are in setup.cfg
+
+
+#### References:
+
+- https://flask.palletsprojects.com/en/2.0.x/
+- https://bootstrap-flask.readthedocs.io/
+- https://flask.palletsprojects.com/en/2.0.x/tutorial/
+
+
+----------------------
+
 
 ##### Based on The Application Factory Pattern shown in official [Flask Tutorial](https://flask.palletsprojects.com/en/2.0.x/tutorial/)
