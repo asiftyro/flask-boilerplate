@@ -7,7 +7,7 @@
     <meta name="author" content="Asif R. Porosh">
     <title>{% block title %}{% endblock %} - Flaskr</title>
     {{ bootstrap.load_css() }}
-    <link rel="stylesheet" href="{{url_for('static', filename='custom.css') }}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/custom.css') }}">
   </head>
   <body>
     
@@ -49,9 +49,15 @@
       <div class="sidebar-sticky pt-3">
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link active" href="#">
+            <a class="nav-link active" href="{{url_for('admin.content_index')}}">
+              <span data-feather="package"></span>
+              Contents <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
               <span data-feather="home"></span>
-              Dashboard <span class="sr-only">(current)</span>
+              Dashboard <span class="sr-only"></span>
             </a>
           </li>
           <li class="nav-item">
@@ -142,6 +148,10 @@
   </div>
 </div>
 {{ bootstrap.load_js() }}
+<script src="{{url_for('static', filename='js/feather.min.js') }}"></script>
+<script>
+  feather.replace()
+</script>
   </body>
 </html>
 

@@ -1,0 +1,23 @@
+{% extends 'layouts/admin/index.html' %}
+{% block title %}
+Not Found - 404
+{% endblock %}
+
+{% block content %}
+<div class="jumbotron w-75">
+  <div class="container">
+  <h1>Not Found - 404</h1>
+  <p class="lead">The requested URL was not found on the server.</p>
+  <hr class="my-4">
+  <p>
+    If you entered the URL manually please check your spelling and try again.
+  </p>
+  <p>
+  <a href="{{ url_for('admin.index') if g.user else '/' }}">
+    <span data-feather="arrow-left-circle"></span>
+    Home <span class="sr-only"></span>
+  </a>
+    </p>
+  </div>
+</div>
+{% endblock %}

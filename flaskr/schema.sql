@@ -1,5 +1,6 @@
 DROP TABLE IF EXISTS user;
 DROP TABLE IF EXISTS post;
+DROP TABLE IF EXISTS content;
 
 CREATE TABLE user (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -15,3 +16,18 @@ CREATE TABLE post (
   body TEXT NOT NULL,
   FOREIGN KEY (author_id) REFERENCES user (id)
 );
+
+CREATE TABLE content (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  author_id INTEGER NOT NULL,
+  created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  section TEXT NOT NULL,
+  content TEXT NOT NULL,
+  content_position INTEGER,
+  menu_name TEXT,
+  menu_position INTEGER NOT NULL,
+  menu_visibility INTEGER NOT NULL,
+  publish INTEGER NOT NULL,
+  FOREIGN KEY (author_id) REFERENCES user (id)
+);
+

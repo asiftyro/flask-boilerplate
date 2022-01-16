@@ -102,7 +102,10 @@ pip3 freeze | xargs pip3 uninstall -y
 - [ ] Google analytics integration
 - [ ] Server and Cient side Datatables integration
 - [X] Test implementation
-- [ ] 404 page
+- [x] Feather icon implementation
+- [x] 404 page
+- [ ] Logging
+- [ ] Flash message with criticality
 
 
 ----------------------
@@ -116,7 +119,7 @@ pip3 freeze | xargs pip3 uninstall -y
 - https://flask.palletsprojects.com/en/2.0.x/
 - https://bootstrap-flask.readthedocs.io/
 - https://flask.palletsprojects.com/en/2.0.x/tutorial/
-
+- https://feathericons.com/
 
 ----------------------
 

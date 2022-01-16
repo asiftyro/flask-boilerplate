@@ -1,8 +1,5 @@
 import os, sys
-# from os.path import dirname
-# print(dirname(__file__))
-# sys.path.append(dirname(__file__))
-from flask import Flask
+from flask import Flask, render_template
 
 
 from flask_bootstrap import Bootstrap4
@@ -12,6 +9,11 @@ bootstrap = Bootstrap4()
 def create_app(test_config=None):
     # create and configure the app
     app = Flask(__name__, instance_relative_config=True)
+    
+    @app.errorhandler(404)
+    def page_not_found(error):
+        return render_template('views/error/404.html')
+
     app.config.from_mapping(
         SECRET_KEY='dev',
         DATABASE=os.path.join(app.instance_path, 'flaskr.sqlite'),
@@ -49,5 +51,6 @@ def create_app(test_config=None):
     from . import admin
     app.register_blueprint(admin.bp)
     
+
 
     return app
