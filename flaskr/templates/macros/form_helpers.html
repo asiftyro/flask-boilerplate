@@ -1,0 +1,46 @@
+{% macro render_field(field) %}
+    {% if field.flags.hidden %}
+        {{ field(**kwargs)|safe }}
+    {% else%}
+    <div class="form-group">
+        {{ field.label }} {% if field.flags.required %}*{% endif %}
+        {{ field(**kwargs)|safe }}
+        <div id="username_help" class="invalid-feedback">
+        {% if field.errors %}
+            <ul>
+            {% for error in field.errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+        </div>
+    </div>
+    {% endif %}
+{% endmacro %}
+
+{% macro render_form(form, submit_button_label, reset_button_label) %}
+    {% for field in form %}
+        {% if field.flags.hidden %}
+            {{ render_field(field)}}
+        {% else%}
+            {{
+            render_field(
+            field, 
+            class="form-control" + (" is-invalid" if field.errors else ""), 
+            **{"aria-describedby": field.id+"_help", "autocomplete": "off"}
+            ) 
+            }}
+        {% endif %}
+    {% endfor %}
+    
+    {% if reset_button_label or submit_button_label %}
+        <div class="text-right border-top pt-3">
+            {% if reset_button_label %}
+                <button type="reset" class="btn btn-secondary">{{reset_button_label}}</button>
+            {% endif %}
+            {%if submit_button_label %}
+                <button type="submit" class="btn btn-primary">{{submit_button_label}}</button>
+            {% endif %}
+        </div>
+    {% endif %}
+{% endmacro %}    

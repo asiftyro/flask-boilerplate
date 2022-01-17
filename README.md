@@ -68,9 +68,12 @@ deactivate
 
 # Remove all packages installed by pip3
 pip3 freeze | xargs pip3 uninstall -y
+
+# Set ENV and run flask
+export FLASK_APP=flaskr;export FLASK_ENV=development;flask run;
 ```
 
-  
+
 --------------------------
 
   
@@ -85,7 +88,8 @@ pip3 freeze | xargs pip3 uninstall -y
 	- [ ] Re/Captcha implementation
 	- [ ] WYSIWYG implementation
 	- [-] Update existing forms
-	- [ ] Admin CRUD
+	- [-] Admin CRUD
+	- [ ] File Upload
 - [ ] SQLAlchemy integration
 - [ ] DB Migration system integration
 - [ ] Mail integration
@@ -117,7 +121,6 @@ pip3 freeze | xargs pip3 uninstall -y
 
 #### Notes:
  - Test settings are in setup.cfg
-
 
 #### References:
 
