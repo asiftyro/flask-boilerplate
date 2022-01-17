@@ -5,10 +5,6 @@ from flask_wtf.csrf import CSRFProtect
 from importlib import import_module
 import time
 
-# print(time.strftime('%Y-%m-%d %H:%M:%S')) # before timezone change
-os.environ['TZ'] = 'Asia/Dhaka' # set new timezone
-time.tzset()
-# print(time.strftime('%Y-%m-%d %H:%M:%S')) # after timezone change
 
 csrf = CSRFProtect()
 bootstrap = Bootstrap4()
@@ -30,6 +26,10 @@ def create_app(test_config=None):
     else:
         # load the test config if passed in
         app.config.from_mapping(test_config)
+
+    # set timezone
+    os.environ['TZ'] = 'Asia/Dhaka' 
+    time.tzset()
 
     # ensure the instance folder exists
     try:

@@ -108,12 +108,14 @@ export FLASK_APP=flaskr;export FLASK_ENV=development;flask run;
 	- [ ]  Roles
 - [ ] Google analytics integration
 - [ ] Server and Cient side Datatables integration
-- [X] Test implementation
+- [x] Test implementation
 - [x] Feather icon implementation
 - [x] 404 page
 - [ ] Logging
-- [ ] Flash message with criticality
-- [ ] Time zone
+- [x] Flash message with criticality
+- [x] Favicon
+- [ ] Sitename
+- [x] Time zone
 - [x] Blueprint auto loading
 
 

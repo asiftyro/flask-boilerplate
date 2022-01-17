@@ -8,6 +8,7 @@
     <title>{% block title %}{% endblock %} - Flaskr</title>
     {{ bootstrap.load_css() }}
     <link rel="stylesheet" href="{{url_for('static', filename='css/custom.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon-alt.png') }}"
   </head>
   <body>
     
@@ -133,8 +134,8 @@
       </div>
 
       <div class="d-flex justify-content-between1 flex-wrap flex-md-nowrap1 align-items-center1 pt-3 pb-2 mb-3">
-        {% for message in get_flashed_messages() %}
-        <div class="flash alert alert-warning alert-dismissible fade show w-100" role="alert">
+        {% for category, message in get_flashed_messages(with_categories=True) %}
+        <div class="flash alert alert-{{category}} alert-dismissible fade show w-100" role="alert">
           {{ message }}
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>

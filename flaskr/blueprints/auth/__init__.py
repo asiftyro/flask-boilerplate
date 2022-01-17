@@ -49,10 +49,10 @@ def login():
         if error is None:
             session.clear()
             session['user_id'] = user['id']
-            flash("Login Successful")
+            flash('Login Successful', 'success')
             return redirect(url_for('admin.index'))
 
-        flash(error)
+        flash(error, 'danger')
 
     return render_template('views/auth/login.html', form=form)
 
@@ -82,7 +82,7 @@ def register():
             else:
                 return redirect(url_for("auth.login"))
 
-        flash(error)
+        flash(error, 'danger')
 
     return render_template('views/auth/register.html')
 
