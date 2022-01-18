@@ -6,7 +6,12 @@
 {% endblock %}
 
 {% block header %}
-  <h1 class="h2">Admin: Create Post</h1>
+  <h1 class="h4">Admin: Create Post</h1>
+  <div class="btn-toolbar mb-2 mb-md-0">
+    <div class="btn-group mr-2">
+      <a href="{{url_for('admin.post_index')}}" class="btn btn-sm btn-outline-secondary">Back</a>
+    </div>
+  </div>
 {% endblock %}
 
 {% block content %}

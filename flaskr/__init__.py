@@ -28,8 +28,8 @@ def create_app(test_config=None):
         app.config.from_mapping(test_config)
 
     # set timezone
-    os.environ['TZ'] = 'Asia/Dhaka' 
-    time.tzset()
+    # os.environ['TZ'] = 'Asia/Dhaka' 
+    # time.tzset()
 
     # ensure the instance folder exists
     try:

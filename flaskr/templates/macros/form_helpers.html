@@ -5,7 +5,7 @@
     <div class="form-group">
         {{ field.label }} {% if field.flags.required %}*{% endif %}
         {{ field(**kwargs)|safe }}
-        <div id="username_help" class="invalid-feedback">
+        <div id="{{field.id}}_help" class="invalid-feedback">
         {% if field.errors %}
             <ul>
             {% for error in field.errors %}
@@ -26,8 +26,10 @@
             {{
             render_field(
             field, 
-            class="form-control" + (" is-invalid" if field.errors else ""), 
-            **{"aria-describedby": field.id+"_help", "autocomplete": "off"}
+            class="form-control"
+                + (" custom-select" if field.type=='SelectField' else "")
+                + (" is-invalid" if field.errors else ""), 
+            **{"aria-describedby": field.id + "_help", "autocomplete": "off"}
             ) 
             }}
         {% endif %}

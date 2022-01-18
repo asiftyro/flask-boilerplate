@@ -92,10 +92,12 @@ export FLASK_APP=flaskr;export FLASK_ENV=development;flask run;
     	- [ ] Register
 - [-] Admin 
   	- [x] Create Post
-  	- [ ] Edit Post
-  	- [ ] View Post
+  	- [x] Edit Post
+  	- [x] View Post
   	- [x] View All Post
 	- [ ] File Upload
+	- [ ] List Menu
+	- [ ] Edit Menu
 - [ ] SQLAlchemy integration
 - [ ] DB Migration system integration
 - [ ] Mail integration
@@ -121,7 +123,7 @@ export FLASK_APP=flaskr;export FLASK_ENV=development;flask run;
 - [x] Flash message with criticality
 - [x] Favicon
 - [ ] Sitename
-- [x] Time zone
+- [-] Time zone FIXME
 - [x] Blueprint auto loading
 - [ ] Code formatter/prettyfier to show content
 - [ ] Code auto format in textarea

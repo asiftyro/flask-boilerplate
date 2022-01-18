@@ -3,16 +3,16 @@
 
 
 {% block title %}
-{# TODO: based on post count, make title plural#}
-Admin - Post
+Admin - Posts
 {% endblock %}
 
 {% block header %}
-  <h1 class="h2">Admin: Post</h1>
+  <h1 class="h4">Admin: Posts</h1>
 {% endblock %}
 
 {% block content %}
   {% if posts %}
+    <div class="col">
     {{ 
       render_table(
         posts,
@@ -42,5 +42,6 @@ Admin - Post
         ]
       )
     }}
+    </div>
   {% endif %}
 {% endblock %}
