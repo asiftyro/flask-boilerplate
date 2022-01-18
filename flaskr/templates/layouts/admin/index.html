@@ -12,147 +12,102 @@
   </head>
   <body>
     
-<nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-  <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">Flaskr Brand</a>
-  <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <!-- <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search"> -->
-  {% if g.user %}
-  <ul class="navbar-nav px-3 ml-auto">
-    <li class="nav-item text-nowrap">
-      <span class="badge badge-pill badge-primary p-1">{{ g.user['username'] }}</span>
-    </li>
-  </ul>
-  <ul class="navbar-nav px-3">
-    <li class="nav-item text-nowrap">
-      <a class="nav-link" href="{{ url_for('auth.logout') }}">Log Out</a>
-    </li>
-  </ul>
-  {% else %}
-  <ul class="navbar-nav px-3 ml-auto">
-    <li class="nav-item text-nowrap">
-      <a class="nav-link" href="{{ url_for('auth.register') }}">Register</a>
-    </li>
-  </ul>
-  <ul class="navbar-nav px-3">
-    <li class="nav-item text-nowrap">
-      <a class="nav-link" href="{{ url_for('auth.login') }}">Log In</a>
-    </li>
-  </ul>
-  {% endif %}
-</nav>
-
-<div class="container-fluid">
-  <div class="row">
-    {% if g.user %}
-    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-      <div class="sidebar-sticky pt-3">
-        <ul class="nav flex-column">
-          <li class="nav-item">
-            <a class="nav-link active" href="{{url_for('admin.content_index')}}">
-              <span data-feather="package"></span>
-              Contents <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="home"></span>
-              Dashboard <span class="sr-only"></span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="file"></span>
-              Orders
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="shopping-cart"></span>
-              Products
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="users"></span>
-              Customers
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="bar-chart-2"></span>
-              Reports
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="layers"></span>
-              Integrations
-            </a>
-          </li>
-        </ul>
-
-        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-          <span>Saved reports</span>
-          <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
-            <span data-feather="plus-circle"></span>
-          </a>
-        </h6>
-        <ul class="nav flex-column mb-2">
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="file-text"></span>
-              Current month
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="file-text"></span>
-              Last quarter
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="file-text"></span>
-              Social engagement
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="file-text"></span>
-              Year-end sale
-            </a>
-          </li>
-        </ul>
-      </div>
+    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+      <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">Flaskr Brand</a>
+      <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!-- <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search"> -->
+      {% if g.user %}
+      <ul class="navbar-nav px-3 ml-auto">
+        <li class="nav-item text-nowrap">
+          <span class="badge badge-pill badge-primary p-1">{{ g.user['username'] }}</span>
+        </li>
+      </ul>
+      <ul class="navbar-nav px-3">
+        <li class="nav-item text-nowrap">
+          <a class="nav-link" href="{{ url_for('auth.logout') }}">Log Out</a>
+        </li>
+      </ul>
+      {% else %}
+      <ul class="navbar-nav px-3 ml-auto">
+        <li class="nav-item text-nowrap">
+          <a class="nav-link" href="{{ url_for('auth.register') }}">Register</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav px-3">
+        <li class="nav-item text-nowrap">
+          <a class="nav-link" href="{{ url_for('auth.login') }}">Log In</a>
+        </li>
+      </ul>
+      {% endif %}
     </nav>
-    {% endif %}
-    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
-      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        {% block header %}{% endblock %}
-      </div>
 
-      <div class="d-flex justify-content-between1 flex-wrap flex-md-nowrap1 align-items-center1 pt-3 pb-2 mb-3">
-        {% for category, message in get_flashed_messages(with_categories=True) %}
-        <div class="flash alert alert-{{category}} alert-dismissible fade show w-100" role="alert">
-          {{ message }}
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        {% endfor %}
-        
-        {% block content %}{% endblock %}
+    <div class="container-fluid">
+      <div class="row">
+        {% if g.user %}
+        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+          <div class="sidebar-sticky pt-3">
+            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+              <span>Posts</span>
+              <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
+                <span data-feather="package"></span>
+              </a>
+            </h6>
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link active" href="{{url_for('admin.post_index')}}">
+                  <span data-feather="file"></span>
+                  Posts <span class="sr-only">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{url_for('admin.post_create')}}">
+                  <span data-feather="file"></span>
+                  Create Post <span class="sr-only"></span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span data-feather="file"></span>
+                  Menu
+                </a>
+              </li>        
+          </div>
+        </nav>
+        {% endif %}
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            {% block header %}{% endblock %}
+          </div>
+
+          <div class="d-flex justify-content-between1 flex-wrap flex-md-nowrap1 align-items-center1 pt-3 pb-2 mb-3">
+            {% for category, message in get_flashed_messages(with_categories=True) %}
+            <div class="flash alert alert-{{category}} alert-dismissible fade show w-100" role="alert">
+              {{ message }}
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            {% endfor %}
+            
+            {% block content %}{% endblock %}
+          </div>
+        </main>
       </div>
-    </main>
-  </div>
-</div>
-{{ bootstrap.load_js() }}
-<script src="{{url_for('static', filename='js/feather.min.js') }}"></script>
-<script>
-  feather.replace()
-</script>
+    </div>
+    {{ bootstrap.load_js() }}
+    <script src="{{url_for('static', filename='js/feather.min.js') }}"></script>
+    
+    <script>
+      $(document).ready(function(){
+        feather.replace();
+      });
+    </script>
+
+    {% block tail %}
+    {% endblock %}
+
   </body>
 </html>
 

@@ -1,0 +1,63 @@
+{% extends 'layouts/admin/index.html' %}
+{% from 'macros/table.html' import render_table %}
+
+
+{% block title %}
+{# TODO: based on post count, make title plural#}
+Admin - Post
+{% endblock %}
+
+{% block header %}
+  <h1 class="h2">Admin: Post</h1>
+{% endblock %}
+
+{% block content %}
+  {% if posts %}
+    {{ 
+      render_table(
+        posts,
+        caption='Posts',
+        responsive=true,
+        table_classes='table-bordered table-striped table-hover table-sm',
+        header_classes='thead-dark',
+        show_actions=true,
+        actions_title="Action",
+        primary_key_title = "#",
+        primary_key='id',
+        actions = [
+          {'route': 'admin.post_index',  'route_variable': 'id', 'name': '', 'title': 'View', 'class':'btn btn-outline-dark btn-sm', 'icon':'file-text'},
+          {'route': 'admin.post_update', 'route_variable': 'id', 'name': '', 'title': 'Edit', 'class':'btn btn-outline-dark btn-sm', 'icon':'edit'}
+        ],
+        actions_pos = 'last',
+        titles=[
+          ('id',None), 
+          ('created', 'Created'),
+          ('slug', 'Slug'),
+          ('visible', 'Visible'),
+          ('post_position', 'Post Position'),
+          ('menu_name', 'Menu name'),
+          ('menu_position', 'Menu position'),
+          ('menu_visibility', 'Menu visibility'),
+          ('username', 'Author')
+        ]
+      )
+    }}
+  {% endif %}
+{% endblock %}
+
+
+
+
+{# titles=[
+          ('id', '#'), 
+          ('created', 'Created'),
+          ('slug', 'Slug'),
+          ('visible', 'Visible'),
+          ('post_position', 'Post Position'),
+          ('menu_name', 'Menu name'),
+          ('menu_position', 'Menu position'),
+          ('menu_visibility', 'Menu visibility'),
+          ('username', 'Author')
+        ] #}
+
+      

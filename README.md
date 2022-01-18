@@ -86,9 +86,15 @@ export FLASK_APP=flaskr;export FLASK_ENV=development;flask run;
     - [x] Implement Flask-WTF
     - [x] Form Validation
 	- [ ] Re/Captcha implementation
-	- [ ] WYSIWYG implementation
+	- [-] WYSIWYG implementation
 	- [-] Update existing forms
-	- [-] Admin CRUD
+    	- [x] Login
+    	- [ ] Register
+- [-] Admin 
+  	- [x] Create Post
+  	- [ ] Edit Post
+  	- [ ] View Post
+  	- [x] View All Post
 	- [ ] File Upload
 - [ ] SQLAlchemy integration
 - [ ] DB Migration system integration
@@ -117,6 +123,10 @@ export FLASK_APP=flaskr;export FLASK_ENV=development;flask run;
 - [ ] Sitename
 - [x] Time zone
 - [x] Blueprint auto loading
+- [ ] Code formatter/prettyfier to show content
+- [ ] Code auto format in textarea
+- [x] Table render macro
+
 
 
 ----------------------
@@ -132,7 +142,7 @@ export FLASK_APP=flaskr;export FLASK_ENV=development;flask run;
 - https://feathericons.com/
 - https://flask-wtf.readthedocs.io/
 - https://wtforms.readthedocs.io/en/3.0.x/
-
+- TinyMCE 5.10.2 (2021-11-17) https://www.tiny.cloud/docs/
 
 ----------------------
 

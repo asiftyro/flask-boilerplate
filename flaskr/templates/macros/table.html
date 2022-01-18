@@ -1,0 +1,94 @@
+{% macro render_actions(actions, pk) %}
+{% if actions %}
+{% for params in actions %}
+    {% if params['route_variable'] %}
+        {% set par = {params['route_variable']:pk} %}
+        {% set url = url_for(params['route'], **par) %}
+    {% else %}
+        {% set url = url_for(params['route']) %}
+    {% endif %}
+
+    <a  href='{{url}}'
+        title="{{ params['title'] if params['title'] else '' }}"
+        class="{{ params['class'] if params['class'] else '' }}" >
+        {% if params['icon'] %}
+            <span data-feather="{{params['icon']}}"></span>
+        {% endif %}
+        {{ params['name'] if params['name'] else '' }}
+    </a>
+{% endfor %}
+{% endif %}
+{% endmacro%}
+
+
+{% macro render_table(data,
+                      titles=None,
+                      primary_key='id',
+                      primary_key_title='',
+                      caption=None,
+                      table_classes=None,
+                      header_classes=None,
+                      responsive=False,
+                      responsive_class='table-responsive',
+                      show_actions=False,
+                      actions_title='Actions',
+                      actions=None,
+                      actions_pos='last') %}
+{% if not titles %}
+    {% set titles = [] %}
+    {% for key in data[0].keys() %}
+        {% set titles = titles.append([key, key]) %}
+    {% endfor %}
+{% endif %}
+{% if responsive %}
+    <div class="{{ responsive_class }}">
+{% endif %}
+<table class="table{% if table_classes %}{{ ' ' + table_classes }}{% endif %}">
+    {% if caption %}
+        <caption>{{ caption }}</caption>
+    {% endif %}
+    <thead{% if header_classes %} class="{{ header_classes }}"{% endif %}>
+        <tr>
+            {% if show_actions  and actions_pos=='first' %}
+                <th scope="col">{{ actions_title }}</th>
+            {% endif %}
+            {% for title in titles %}
+                {% if primary_key_title and title[0]==primary_key%}
+                <th scope="col">{{ primary_key_title }}</th>
+                {% else %}
+                <th scope="col">{{ title[1] }}</th>
+                {% endif %}
+            {% endfor %}
+            {% if show_actions  and actions_pos=='last' %}
+                <th scope="col">{{ actions_title }}</th>
+            {% endif %}
+        </tr>
+    </thead>
+    <tbody>
+    {% for row in data %}
+        <tr>
+            {% if show_actions and actions_pos=='first' %}
+            <td>
+                {{render_actions(actions, row[primary_key])}}
+            </td>
+            {% endif %}
+            {% for title in titles %}
+                {% if title[0] == primary_key %}
+                    <th scope="row">{{ row[title[0]] }}</th>
+                {% else %}
+                    <td>{{ row[title[0]] }}</td>
+                {% endif %}
+            {% endfor %}
+            {% if show_actions and actions_pos=='last' %}
+                <td>
+                    {{render_actions(actions, row[primary_key])}}
+                </td>
+            {% endif %}
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% if responsive %}
+    </div>
+{% endif %}
+{% endmacro %}
