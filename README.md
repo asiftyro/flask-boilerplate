@@ -26,8 +26,9 @@ source venv/bin/activate
 pip3 install -r requirements.txt
 
 # Set env variables
-export FLASK_APP=flaskr
+export FLASK_APP=app
 export FLASK_ENV=development
+export FLASK_DEBUG=True;
 
 # Initialize database
 flask init-db
@@ -70,7 +71,7 @@ deactivate
 pip3 freeze | xargs pip3 uninstall -y
 
 # Set ENV and run flask
-export FLASK_APP=flaskr;export FLASK_ENV=development;flask run;
+export FLASK_APP=app;export FLASK_ENV=development;export FLASK_DEBUG=True;flask run;
 ```
 
 
@@ -96,8 +97,9 @@ export FLASK_APP=flaskr;export FLASK_ENV=development;flask run;
   	- [x] View Post
   	- [x] View All Post
 	- [ ] File Upload
-	- [ ] List Menu
-	- [ ] Edit Menu
+	- [x] List Menu
+	- [x] Edit Menu
+	- [x] Admin Home
 - [ ] SQLAlchemy integration
 - [ ] DB Migration system integration
 - [ ] Mail integration
@@ -119,15 +121,24 @@ export FLASK_APP=flaskr;export FLASK_ENV=development;flask run;
 - [x] Test implementation
 - [x] Feather icon implementation
 - [x] 404 page
+- [ ] 500 page
 - [ ] Logging
 - [x] Flash message with criticality
 - [x] Favicon
-- [ ] Sitename
-- [-] Time zone FIXME
+- [x] Sitename from config
+- [x] Time zone
 - [x] Blueprint auto loading
 - [ ] Code formatter/prettyfier to show content
 - [ ] Code auto format in textarea
 - [x] Table render macro
+- [x] Menu item rendering macro
+- [ ] Route List
+- [ ] Insert template for content type, e.g. hero, slider etc
+- [-] Create model helper methods
+  - [-] find_or_abort
+  - [ ] insert
+  - [ ] delete
+  - [ ] update
 
 
 

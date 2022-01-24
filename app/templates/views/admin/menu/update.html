@@ -1,0 +1,23 @@
+{% extends 'views/admin/layouts/main/index.html' %}
+{% from "macros/form_helpers.html" import render_field, render_form %}
+
+{% block title %}
+Admin - Menu Setup
+{% endblock %}
+
+{% block header %}
+<h1 class="h4">Admin: Menu Setup</h1>
+<div class="btn-toolbar mb-2 mb-md-0">
+  <div class="btn-group mr-2">
+    <a href="{{url_for('menu.index')}}" class="btn btn-sm btn-outline-secondary">Back to Menus</a>
+  </div>
+</div>
+{% endblock %}
+
+{% block content %}
+  <div class="col-sm-12 col-md-10 col-lg-8">
+    <form method="POST">
+      {{render_form(form, "Save", "Reset")}}
+    </form>  
+  </div>
+{% endblock %}

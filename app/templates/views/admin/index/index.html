@@ -1,0 +1,52 @@
+{% extends 'views/admin/layouts/main/index.html' %}
+{% block title %}
+Admin
+{% endblock %}
+{% block header %}
+<h1 class="h4">Admin Home</h1>
+<div class="btn-toolbar mb-2 mb-md-0">
+    <div class="btn-group mr-2">
+        <a type="button" href="{{url_for('post.index')}}" class="btn btn-sm btn-outline-secondary">Post</a>
+        <a type="button" href="{{url_for('menu.index')}}" class="btn btn-sm btn-outline-secondary">Menu</a>
+    </div>
+</div>
+{% endblock %}
+{% block content %}
+    <div class="jumbotron mt-3 w-100 bg-secondary text-white px-5 py-4">
+        <h3>Ello, wald!</h3>
+        <p class="lead">Welcome to one page CMS.</p>
+        <hr>
+        <p>A very Opinionated CMS to handle one page websites.</p>
+    </div>
+    <div class="mb-4">
+        <h4>How to: </h4>
+        <hr>
+    </div>
+    <div class="col-sm-10 col-md-8 col-lg-4 step-box text-center">
+        Upload image/document files as necessary to prepare content
+    </div>
+    <div class='w-100'></div>
+    <div class="col-sm-10 col-md-8 col-lg-4 step-box text-center">
+        Compose Content with HTML, CSS, JS, Image, Plain Text and/or other resources
+    </div>
+    <div class='w-100'></div>
+    <div class="col-sm-10 col-md-8 col-lg-4 step-box text-center">
+        Preview Content and make necessary changes
+    </div>
+    <div class='w-100'></div>
+    <div class="col-sm-10 col-md-8 col-lg-4 step-box text-center">
+        Publish content
+    </div>
+    <div class="col-sm-10 col-md-8 col-lg-4 step-box text-center">
+        Create A Menu Entry for the content (Optional)
+    </div>
+    <div class="col-sm-10 col-md-8 col-lg-4 step-box text-center">
+        Publish the Menu Entry (Optional)
+    </div>
+    <div class="col-sm-10 col-md-8 col-lg-4 final-step-box text-center">
+        <span data-feather="thumbs-up"></span>
+        <br>
+        A content is published
+    </div>
+
+{% endblock %}

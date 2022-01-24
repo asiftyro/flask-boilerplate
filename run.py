@@ -2,7 +2,7 @@
 
 import os
 
-from flaskr import create_app
+from app import create_app
 
 # config_name = os.getenv('FLASK_ENV')
 

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Asif R. Porosh">
+    <title>{% block title %}{% endblock %} - Flaskr</title>
+    {{ bootstrap.load_css() }}
+    <link rel="stylesheet" href="{{url_for('static', filename='css/custom.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon-alt.png') }}"
+  </head>
+  <body>
+    
+
+
+    <div class="container-fluid">
+      <div class="row">
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            {% block header %}{% endblock %}
+          </div>
+            <div class="row">
+            {% for category, message in get_flashed_messages(with_categories=True) %}
+            <div class="flash alert alert-{{category}} alert-dismissible fade show w-100" role="alert">
+              {{ message }}
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            {% endfor %}
+            {% block content %}{% endblock %}
+          </div>
+        </main>
+      </div>
+    </div>
+    {{ bootstrap.load_js() }}
+    <script src="{{url_for('static', filename='js/feather.min.js') }}"></script>
+    
+    <script>
+      $(document).ready(function(){
+        feather.replace();
+      });
+    </script>
+
+    {% block tail %}
+    {% endblock %}
+
+  </body>
+</html>
+

@@ -1,0 +1,6 @@
+{% for category, message in get_flashed_messages(with_categories=True) %}
+<div class="flash alert alert-{{category}} alert-dismissible fade show w-100" role="alert">
+    {{ message }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+</div>
+{% endfor %}

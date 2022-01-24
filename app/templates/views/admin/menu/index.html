@@ -1,0 +1,49 @@
+{% extends 'views/admin/layouts/main/index.html' %}
+{% from 'macros/table_helpers.html' import render_table %}
+
+
+{% block title %}
+Admin - Menu
+{% endblock %}
+
+{% block header %}
+  <h1 class="h4">Admin: Menu</h1>
+{% endblock %}
+
+
+{% block content %}
+<div class="col">
+  {% if posts %}
+    {{ 
+      render_table(
+        posts,
+        caption='Posts',
+        responsive=true,
+        table_classes='table-bordered table-striped table-hover table-sm',
+        header_classes='thead-dark',
+        show_actions=true,
+        actions_title="Action",
+        primary_key_title = "#",
+        primary_key='id',
+        actions = [
+          {'route': 'menu.update', 'route_variable': 'id', 'name': '', 'title': 'Edit Menu item', 'class':'btn btn-outline-dark btn-sm', 'icon':'edit'}
+        ],
+        actions_pos = 'last',
+        titles=[
+          ('id',None), 
+          ('created', 'Created'),
+          ('slug', 'Slug'),
+          ('menu_name', 'Menu name'),
+          ('menu_position', 'Menu position'),
+          ('menu_visibility', 'Menu visibility'),
+          ('user_name', 'Author')
+        ]
+      )
+    }}
+  {% endif %}
+</div>
+
+{% endblock %}
+
+
+#}
